@@ -44,6 +44,14 @@ func newRunListCmd(f *cmdutil.Factory) *cobra.Command {
 		Use:     "list",
 		Aliases: []string{"ls"},
 		Short:   "List recent runs",
+		Long: `List recent runs across all branches and build states.
+
+The result limit defaults to 30; --limit 0 removes it.
+Without a job filter, searches start with a window of 5,000 recent builds.
+If the search stops early, matching runs may be missing. Scope with --project
+or --job, or increase the search cap with TEAMCITY_LOOKUP_LIMIT (a positive
+integer, e.g. 100000). Zero and invalid values use the default of 5,000.
+--limit 0 does not remove the search cap. There is no default time cutoff.`,
 		Example: `  teamcity run list
   teamcity run list --favorites
   teamcity run list --user @me --limit 1
@@ -55,6 +63,7 @@ func newRunListCmd(f *cmdutil.Factory) *cobra.Command {
   teamcity run list --revision @head --job Falcon_Build
   teamcity run list --tag release
   teamcity run list --since 24h
+  TEAMCITY_LOOKUP_LIMIT=100000 teamcity run list --user @me
   teamcity run list --json
   teamcity run list --json=id,status,webUrl
   teamcity run list --plain | grep failure
