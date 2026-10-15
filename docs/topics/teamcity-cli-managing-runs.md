@@ -249,7 +249,7 @@ Filter by tag (can be repeated, matches runs with all given tags)
 </td>
 <td>
 
-Show builds finished after this time (for example, `24h`, `7d`, `2026-01-21`)
+Show builds started after this time, excluding queued runs (for example, `24h`, `7d`, `2026-01-21`)
 
 </td>
 </tr>
@@ -261,7 +261,7 @@ Show builds finished after this time (for example, `24h`, `7d`, `2026-01-21`)
 </td>
 <td>
 
-Show builds finished before this time
+Show builds started before this time
 
 </td>
 </tr>
